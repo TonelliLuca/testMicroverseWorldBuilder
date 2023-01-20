@@ -16,7 +16,7 @@ class SendPos {
     send() {
         this.spinning = !this.spinning;
         if (this.spinning) this.step();
-        publish("obj1", "pos", [1,1,1]);
+        this.publish("obj1", "pos", [1,1,1]);
     }
     teardown() {
         this.removeEventListener("pointerDown", "toggle");
