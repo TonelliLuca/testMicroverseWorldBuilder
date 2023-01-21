@@ -1,6 +1,6 @@
 class RecPos {
     setup() {
-        this.subscribe("obj1", "pos", this.step);
+        this.subscribe("obj1", "pos", this.send);
         this.pos = this._translation;
         this.spinning = false; // start without spinning
         this.angle = 0; // the initial angle
@@ -8,7 +8,7 @@ class RecPos {
 
     }
     step() {
-        
+        if (!this.spinning) return;
         this.future(20).step();
         this.angle += this.spinSpeed;
         this.set({ rotation: Microverse.q_euler(0, this.angle, 0) });
