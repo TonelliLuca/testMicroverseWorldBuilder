@@ -21,7 +21,7 @@ export function init(Constants) {
 
     Constants.UserBehaviorDirectory = "behaviors/default";
     Constants.UserBehaviorModules = [
-        "csmLights.js","joeTheBox.js","sendPos.js"
+        "csmLights.js", "joeTheBox.js", "sendPos.js", "recPos.js"
     ];
 
     Constants.DefaultCards = [
@@ -57,6 +57,16 @@ export function init(Constants) {
                 layers: ["pointer"],
                 type: "object",
                 translation: [-4, 0.4, -10],
+                shadow: true,
+            }
+        },
+        {
+            card: {
+                name: "Joe the Box2",
+                behaviorModules: ["JoeTheBox", "recPos"],
+                layers: ["pointer"],
+                type: "object",
+                translation: [4, 0.4, -10],
                 shadow: true,
             }
         },

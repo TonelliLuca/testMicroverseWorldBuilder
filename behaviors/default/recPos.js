@@ -1,23 +1,23 @@
-class SendPos {
+class RecPos {
     setup() {
-        this.addEventListener("pointerDown", "send");
+        this.subscribe("obj1", "pos", this.step);
         this.pos = this._translation;
         this.spinning = false; // start without spinning
         this.angle = 0; // the initial angle
         this.spinSpeed = 0.01; // how fast will we spin (in radians)
-       
+
     }
     step() {
-        if (!this.spinning) return;
+        
         this.future(20).step();
         this.angle += this.spinSpeed;
         this.set({ rotation: Microverse.q_euler(0, this.angle, 0) });
-        this.publish("obj1", "pos", [1, 1, 1]);
+        
     }
     send() {
         this.spinning = !this.spinning;
         if (this.spinning) this.step();
-       
+
     }
     teardown() {
         this.removeEventListener("pointerDown", "toggle");
@@ -30,8 +30,8 @@ class SendPos {
 export default {
     modules: [
         {
-            name: "sendPos",
-            pawnBehaviors: [SendPos],
+            name: "recPos",
+            pawnBehaviors: [RecPos],
         }
     ]
 }
